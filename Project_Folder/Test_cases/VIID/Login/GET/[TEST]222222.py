@@ -21,8 +21,8 @@ class Test_demo:
     def Response_Va(self,response,para):
         '''检查点编写'''
         TEST = CheckPoint().Tests #实例化|判断，原始数据，预期数据
-        TEST("=",response["to"],para["to"])
-        TEST("=", response["from"], para["from"])
-        TEST("=", response["trans_result"][0]["src"], para["word"])
+        TEST("=","to",response["to"],para["to"])
+        TEST("=","from", response["from"], para["from"])
+        TEST("=","trans_result", response["trans_result"][0]["src"], para["word"])
 
 demo = Test_demo().Request()

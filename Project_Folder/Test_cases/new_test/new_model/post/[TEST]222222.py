@@ -15,7 +15,6 @@ class Test_demo:
         }
     def Request(self):
         for x in self.load_dict:
-            #print x["username"]
             '''参数化'''
             body = '''<?xml version="1.0" encoding="UTF-8"?>
                         <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
@@ -42,8 +41,6 @@ class Test_demo:
     def Response_Va(self,response,para):
         '''检查点编写'''
         TEST = CheckPoint().Tests #实例化|判断，原始数据，预期数据
-        TEST("=",response["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["cusdk:LoginRsp"]["cusdk:cuUpdateUrl"],para["cusdk:cuUpdateUrl"])
-        # TEST("=", response["from"], para["from"])
-        # TEST("=", response["trans_result"][0]["src"], para["word"])
-
+        TEST("=","cusdk:cuUpdateUrl",response["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["cusdk:LoginRsp"]["cusdk:cuUpdateUrl"],para["cusdk:cuUpdateUrl"])
+        TEST("!=","cusdk:passwordRemainTime", response["SOAP-ENV:Envelope"]["SOAP-ENV:Body"]["cusdk:LoginRsp"]["cusdk:passwordRemainTime"],para["cusdk:passwordRemainTime"])
 demo = Test_demo().Request()
