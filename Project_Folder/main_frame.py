@@ -15,6 +15,6 @@ def St_Test():
         logobj.debug( x["TEST"]+" begin")
         os.system(x["TEST"]+"")
     logobj.debug(GetDir(os.getcwd()+r'/Test_cases'))
-    logobj.debug("GetDir end")
+    logobj.debug("GetDir end1")
 
 St_Test()
