@@ -1,0 +1,18 @@
+[{
+  "url": "http://172.16.121.25",
+  "port": "5088",
+  "method":"GET",
+  "path": "baidu.post?word=apple&from=en&to=zh",
+  "word":"apple",
+  "from":"en",
+  "to":"zh"
+},
+  {
+  "url": "http://172.16.121.25",
+  "port": "5088",
+  "method":"GET",
+  "path": "baidu.post?word=苹果&from=en&to=zh",
+  "word":"苹果",
+  "from":"en",
+  "to":"zh"
+}]

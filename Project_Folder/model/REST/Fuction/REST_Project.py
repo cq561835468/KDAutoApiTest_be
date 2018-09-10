@@ -2,41 +2,33 @@
 # -*- coding: UTF-8 -*-
 import os
 import requests
+import datetime
 from Project_Folder.Fuction.logging_class import Logger
-path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-paths = path +r'\Logs\REST_Project.conf'
-logobj = Logger(paths)
-logobj.debug("test_begin")
+#path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
+logobj = Logger(os.getcwd() + r'\Logs'+'\\'+time+'\Rest.log')
+logobj.debug("REST_Project Begin")
+logobj.debug("REST_Project End")
 
 class REST_Project():
     def __init__(self):
         pass
-    def GET(self,url,port,path,head):
+    def GET(self,url,port=80,path="/",head=None):
         '''发送GET请求'''
-        #print url,port,path,head
-        return "GET"
+        response = requests.request("GET", str(url) + ':' + str(port) + '/' + path, headers=head)
+        return response.content
 
     def POST(self,url,port,path,head,body):
         '''发送POST请求'''
-        #print str(url)+':'+str(port)+'/'+path
-        # payload = "{\"word\":\"apple\",\"from\":\"en\",\"to\":\"jp\"}"
-       # payload = "{\"word\":\"apple\",\"from\":\"en\",\"to\":\"jp\"}"
-        #body = eval(body)
-        # print payload
-        #body = "{\"word\": \"apple\", \"from\": \"en\", \"to\": \"zh\"}"
-        #body = eval(body)
         response = requests.request("POST", str(url)+':'+str(port)+'/'+path, data=body, headers=head)
-        #print url,port,path,head,body
-        #print "i am POST"
-        #print response.content
-        return response
+        return response.content
 
     def PUT(self,url,port,path,head,body):
         '''发送PUT请求'''
-        #print url,port,path,head,body
-        return "PUT"
+        response = requests.request("PUT", str(url)+':'+str(port)+'/'+path, data=body, headers=head)
+        return response.content
 
     def DELETE(self,url,port,path,head,body):
         '''发送DELETE请求'''
-        #print url,port,path,head,body
-        return "DELETE"
+        response = requests.request("DELETE", str(url)+':'+str(port)+'/'+path, data=body, headers=head)
+        return response.content
