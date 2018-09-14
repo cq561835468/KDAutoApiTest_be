@@ -36,13 +36,13 @@
     }
     .Test_Result th,
     .Test_datail th{
-        width:100%;
+        width:1000px;
         font-size: 16px;
     }
     .Test_Result td,
     .Test_datail td{
         text-align:center;
-        width:200px;
+        width:150px;
         font-size: 14px;
     }
 </style>
@@ -56,25 +56,17 @@
             <th>测试信息</th>
             <th></th>
         </tr>
-            <tr>
-            <td>执行时间</td>
-            <td>2018-08-02 17:34:49</td></tr>
-            <tr>
-            <td>框架版本</td>
-            <td>v1.1</td>
-        </tr>
-            <tr>
-            <td>脚本总运行时间</td>
-            <td>0.8ms</td>
-        </tr>
         </table>
         <table class="Test_Result">
         <tr>
-            <th colspan="8">测试结果</th>
+            <th colspan="99">测试结果</th>
         </tr>
             <tr>
+                <td rowspan="2">测试产品</td>
+                <td rowspan="2">测试模块</td>
+                <td rowspan="2">测试方法</td>
                 <td rowspan="2">测试用例集名称</td>
-                <td colspan="2">迭代次数</td>
+                <td colspan="2">用例集迭代次数</td>
                 <td colspan="2">用例状态</td>
                 <td colspan="2">检查点</td>
             </tr>
@@ -85,33 +77,6 @@
                 <td>失败</td>
                 <td>总计</td>
                 <td>失败</td>
-            </tr>
-            <tr>
-                <td>用例1</td>
-                <td>2</td>
-                <td>1</td>
-                <td>2</td>
-                <td>1</td>
-                <td>2</td>
-                <td>1</td>
-            </tr>
-                        <tr>
-                <td>用例1</td>
-                <td>2</td>
-                <td>1</td>
-                <td>2</td>
-                <td>1</td>
-                <td>2</td>
-                <td>1</td>
-            </tr>
-                        <tr>
-                <td>用例1</td>
-                <td>2</td>
-                <td>1</td>
-                <td>2</td>
-                <td>1</td>
-                <td>2</td>
-                <td>1</td>
             </tr>
         </table>
         <table class="Test_datail">
@@ -127,46 +92,6 @@
                 <td>用例返回状态码</td>
                 <td>检查点通过状态</td>
                 <td>详情</td>
-            </tr>
-            <tr>
-                <td>测试1</td>
-                <td>vc_login</td>
-                <td>Status_code</td>
-                <td>POST</td>
-                <td>494ms</td>
-                <td>200</td>
-                <td>Pass</td>
-                <td>[CheckPoint]Status_code[Ori_Data]200[=][Expect_Data]200[Pass]</td>
-            </tr>
-            <tr>
-                <td>测试1</td>
-                <td>vc_login</td>
-                <td>resultMsg</td>
-                <td>POST</td>
-                <td>313ms</td>
-                <td>200</td>
-                <td>Pass</td>
-                <td>[CheckPoint]resultCode[Ori_Data]200[=][Expect_Data]200[Pass]</td>
-            </tr>
-                        <tr>
-                <td>测试1</td>
-                <td>vc_login</td>
-                <td>resultCode</td>
-                <td>POST</td>
-                <td>313ms</td>
-                <td>200</td>
-                <td>Pass</td>
-                <td>[CheckPoint]resultMsg[Ori_Data]\u6210\u529f[=][Expect_Data]\u6210\u529f[Pass]</td>
-            </tr>
-                        <tr>
-                <td>测试1</td>
-                <td>vc_login</td>
-                <td>ip</td>
-                <td>POST</td>
-                <td>313ms</td>
-                <td>200</td>
-                <td>Pass</td>
-                <td>[CheckPoint]ip[Ori_Data]172.16.249.130[=][Expect_Data]172.16.249.130[Pass]</td>
             </tr>
         </table>
     </div>

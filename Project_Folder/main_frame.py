@@ -44,11 +44,13 @@ class Main():
 if __name__ == "__main__":
     starttime = datetime.datetime.now()
     time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
-    #main = Main()
-    #main.St_Test('Demo_Project')
+    time_lo = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+    main = Main()
+    main.St_Test('Demo_Project')
     endtime = datetime.datetime.now()
     run_time =  ((endtime - starttime).microseconds)/1000
     #time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
     #print str(time)
     #print GetDir_json("Reports/"+ str(time))
-    Create_Html_Report(GetDir_json("Reports/"+ str(time)),run_time)
+    #print GetDir_json("Reports/"+ str(time))
+    Create_Html_Report(GetDir_json("Reports/"+ str(time)),run_time,time_lo)

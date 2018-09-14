@@ -38,15 +38,14 @@ class Test_demo:
                                                                                                 head=head,
                                                                                                 body=json.dumps(eval(json.dumps(body))))
             eva_Response_Api = eval(self.Response_Api.content) #格式转换
-            #self.Response_Va(eva_Response_Api,  x,  Test_name=self.Test_Cases_name[0]) #检查点1
-    def Response_Va(self,response,para,Test_name):
-        '''检查点编写alias为输出到报告中测试集的名称'''
-        #-----------------------检查点编写-------------------------------
-        self.TEST("=", "Status_code",Test_name,self.Response_Api.status_code, para["Re_State"])
-        self.TEST("=", "resultCode", Test_name, response["resultCode"], para["resultCode"])
-        self.TEST("=", "resultMsg", Test_name, response["resultMsg"].decode("utf-8"), para["resultMsg"])
-        self.TEST("=", "ip", Test_name, response["ip"], para["ip"])
-        for x in response["user"]["privileges"]:
-            self.TEST("=", "privilegeOrder", Test_name, x["privilegeOrder"], 3)
+            self.Response_Va(eva_Response_Api,x,Test_name=self.Test_Cases_name[0],
+                             method=x["method"],
+                             Res_Time=self.Response_Api.elapsed.microseconds /1000)
+    def Response_Va(self, response, para, Test_name, method, Res_Time):
+        '''检查点'''
+        self.TEST("=", "Status_code",Test_name,self.Response_Api.status_code, para["Re_State"],method,Res_Time)
+        self.TEST("=", "resultCode", Test_name, response["resultCode"], para["resultCode"],method,Res_Time)
+        self.TEST("=", "resultMsg", Test_name, response["resultMsg"].decode("utf-8"), para["resultMsg"],method,Res_Time)
+        self.TEST("=", "ip", Test_name, response["ip"], para["ip"],method,Res_Time)
 
 demo = Test_demo().Request()

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-import os,json
-import datetime
+import os
 from Fuction.CreateHtml import CreateHtml
 
 def GetDir(path):
@@ -22,18 +21,13 @@ def GetDir_json(path):
     '''获取该设备所有用例+外部数据，以数组形式返回'''
     return_list = []
     for root, dirs, files in os.walk(path):
-        tmp_list = []
         for x in files:
             if "json" in x:
-                tmp_list.append(root+"\\"+x)
-    return tmp_list
+                return_list.append(root+"\\"+x)
+    return return_list
 
-def Create_Html_Report(filelist,run_time):
-    for x in filelist:
-        with open(x, 'r') as load_f:
-            load_dict = json.load(load_f)
-        CreateHtml().run()
-        #if not xxx.index(["product",""]) for xx in x:
+def Create_Html_Report(filelist,run_time,time):
+    CreateHtml().run(filelist,run_time,time)
 
 def MkdirFolder(filename):
     '''新建日志存放文件夹，按照小时为单位'''
