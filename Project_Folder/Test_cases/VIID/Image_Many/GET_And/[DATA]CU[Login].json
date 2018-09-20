@@ -17,5 +17,6 @@
   "cusdk:port":"3478",
   "cusdk:serverDataVersion":"",
   "cusdk:session":"",
-  "cusdk:stunInfo":"3478"
+  "cusdk:stunInfo":"3478",
+  "Re_State":200
 }]

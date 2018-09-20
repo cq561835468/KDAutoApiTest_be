@@ -21,6 +21,7 @@ class REST_Project():
 
     def POST(self,url,port,path,head,body):
         '''发送POST请求'''
+        #print str(url)+':'+str(port)+path
         response = requests.request("POST", str(url)+':'+str(port)+path, data=body, headers=head)
         self.logobj.debug("REST_Project End")
         self.logobj.debug("REST_main End")

@@ -1,35 +1,26 @@
-[{
-	"需要输入参数：":">>",
-	"url":"http://172.16.249.130",
-    "port":"9900",
-	"path":"/ptt/pttLogin/pttForcedLogin",
-    "path2":"/ptt/service/listService?uid=",
-    "method":"POST",
-    "method2":"GET",
-	"userCode": "admin",
-    "userPassword": "admin",
-
-	"需要检验参数：":">>",
-	"Re_State":201,
-	"resultCode":200,
-	"resultMsg":"成功",
-	"ip":"172.16.249.130"
-},
+[
 	{
-	"需要输入参数：":">>",
-	"url":"http://172.16.249.130",
-    "port":"9900",
-	"path":"/ptt/pttLogin/pttForcedLogin",
-    "path2":"/ptt/service/listService?uid=",
-    "method":"POST",
-    "method2":"GET",
-	"userCode": "admin",
-    "userPassword": "admin",
-
-	"需要检验参数：":">>",
-	"Re_State":200 ,
-	"resultCode":200,
-	"resultMsg":"成功",
-	"ip":"172.16.249.130"
-}
+		"需要输入参数：": ">>",
+		"url": "http://172.16.120.22",
+		"wsurl": "ws://172.16.120.22",
+		"port": "3002",
+		"path_livestream": "/webmedia/livestream",
+		"path_sessionInfo": "/webmedia/sessionInfo",
+		"path_viewer": "/webmedia/livestream/viewer",
+		"path_subscription": "/webrtc/subscription",
+		"path_push": "/webrtc/push/",
+		"method": "POST",
+		"method2": "PUT",
+		"method3": "DELETE",
+		"method4": "Create_One",
+		"type":"webrtc",
+		"video":"recvonly",
+		"audio":"recvonly",
+		"DevID":"rtsp://172.16.120.22:554/domain=31010100002000000000&resource=31010100001320000001-0&quality=0&src=0&user=",
+		"需要检验参数：": ">>",
+		"Re_State": 201,
+		"resultCode": 200,
+		"resultMsg": "成功",
+		"ip": "172.16.249.130"
+	}
 ]

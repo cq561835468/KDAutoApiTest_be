@@ -24,6 +24,7 @@ class Test_demo:
             }
             #----------------------------
             self.Response_Api = REST_Request(name="VIID-POST").run(x["method"],x["url"],x["port"],x["path"],self.head,json.dumps(eval(json.dumps(body))))
+            print self.Response_Api.content
             self.Response_Va(eval(self.Response_Api.content),x)
     def Response_Va(self,response,para):
         '''检查点编写'''

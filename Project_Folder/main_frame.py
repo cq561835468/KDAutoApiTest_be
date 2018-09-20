@@ -16,10 +16,13 @@ class Auto_API(threading.Thread):
 
 class Main():
     def __init__(self):
-        time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
-        path = os.getcwd() + r'\Logs'+'\\'+time+r'\main_frame.log'
-        MkdirFolder(os.getcwd() + r'\Logs' + '\\' + time)  # 新建log日志
-        MkdirFolder(os.getcwd() + r'\Reports' + '\\' + time)  # 新建report
+        self.time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
+        self.time_lo = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+        #endtime = datetime.datetime.now()
+        #self.run_time = ((endtime - starttime).microseconds) / 1000
+        path = os.getcwd() + r'\Logs'+'\\'+self.time+r'\main_frame.log'
+        MkdirFolder(os.getcwd() + r'\Logs' + '\\' + self.time)  # 新建log日志
+        MkdirFolder(os.getcwd() + r'\Reports' + '\\' + self.time)  # 新建report
         self.logobj = Logger(path)
 
     def run_list_thread(self, path_py, arrw):
@@ -40,17 +43,10 @@ class Main():
             self.run_list_thread(path_py,x["TEST"]) #多线程执行脚本
             self.logobj.debug(x["TEST"] + " End")
         #self.logobj.debug(GetDir(os.getcwd()+r'/Test_cases'))
+        time_end = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+        Create_Html_Report(GetDir_json("Reports/" + str(self.time)), time_end, self.time_lo)
+
 
 if __name__ == "__main__":
-    starttime = datetime.datetime.now()
-    time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
-    time_lo = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
     main = Main()
     main.St_Test('Demo_Project')
-    endtime = datetime.datetime.now()
-    run_time =  ((endtime - starttime).microseconds)/1000
-    #time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
-    #print str(time)
-    #print GetDir_json("Reports/"+ str(time))
-    #print GetDir_json("Reports/"+ str(time))
-    Create_Html_Report(GetDir_json("Reports/"+ str(time)),run_time,time_lo)

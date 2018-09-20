@@ -24,6 +24,7 @@ class CheckPoint():
 
     def Init_Json(self):
         '''新建临时json'''
+        '''用例集'''
         self.folder_tmp = {}
         self.folder_tmp["State"] = "Pass"
         self.folder_tmp["product"] = self.abname[-4:-1][0]
@@ -32,12 +33,14 @@ class CheckPoint():
         self.folder_tmp["TestListName"] = self.abname[-1][:-3]
         self.folder_tmp["iter"] = self.iter
         for x in self.Test_list:
+            '''用例'''
             self.folder_tmp[x] = {}
             self.folder_tmp[x]["result"] = []
             self.folder_tmp[x]["method"] = []
             self.folder_tmp[x]["detail"] = []
-            self.folder_tmp[x]["Response_Time"] = []
+            self.folder_tmp[x]["Response_Time"] = ""
             self.folder_tmp[x]["Status"] = 'Pass'
+            self.folder_tmp[x]["Response_State"] = ""
         file2 = open(self.json_tmp,'w')
         file2.write(json.dumps(self.folder_tmp, indent=4))
         file2.close()
@@ -63,6 +66,7 @@ class CheckPoint():
         '''error'''
         with open(self.json_tmp, 'r') as load_f:
             load_dict = json.load(load_f)
+        load_dict["State"] = 'Error'
         for x in self.Test_list:
             load_dict[x]["Status"] = 'Error'
         file = open(self.json_tmp, 'w')
@@ -72,7 +76,7 @@ class CheckPoint():
         #print("%s Error" % filename)
 
     def json_report(self,name,pass_or_fail,testName,target="result"):
-        '''json报告第二层写入'''
+        '''json报告第二层写入检查点'''
         with open(self.json_tmp, 'r') as load_f:
             load_dict = json.load(load_f)
         arrw = {}
@@ -81,6 +85,7 @@ class CheckPoint():
         if pass_or_fail == "Fail":
             print "检查点失败"
             load_dict["State"] = "Fail"
+            load_dict[testName]["Status"] = "Fail"
         file = open(self.json_tmp, 'w')
         file.write(json.dumps(load_dict, indent=4))
         file.close()
@@ -94,7 +99,7 @@ class CheckPoint():
         file.write(json.dumps(load_dict, indent=4))
         file.close()
 
-    def Tests(self,char,name,testname,data1,data2,method,Res_Time):
+    def Tests(self,char,name,testname,data1,data2,method,Res_Time,Res_State):
         '''检查点判断'''
         #    data1 = data1.decode("unicode-escape")
         #    data1 = data1.decode("utf-8")
@@ -104,6 +109,7 @@ class CheckPoint():
         Fail_str = u"[Fail]"
         Pass_Long_Str = (Begin_str + "["+char+"]"+End_str+Pass_str) % (name, data1, data2)
         Fail_Long_Str = (Begin_str+"["+char+"]"+End_str+Fail_str) % (name, data1, data2)
+        self.json_method(testname, target="Response_State", method=Res_State)
         if char == "=":
             if data1 == data2:
                 print Pass_Long_Str

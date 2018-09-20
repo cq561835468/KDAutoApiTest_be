@@ -30,4 +30,4 @@ class SOAP_Project():
         response = requests.request("POST", str(url)+':'+str(port)+path, data=body, headers=head)
         self.logobj.debug("SOAP_Project End")
         self.logobj.debug("SOAP_main End")
-        return self.xmltojson(response)
+        return [self.xmltojson(response.content),response]

@@ -13,6 +13,8 @@ class WebSocket_Request():
         time = datetime.datetime.now().strftime('%Y-%m-%d_%H')
         logobj = Logger(os.getcwd() + r'\Logs' + '\\' + time + '\\'+name+'.log')
         logobj.debug("WebSocket_main begin")
-    def run(self,method,url,port,path=None,head=None,body=None):
-        if method == "POST":
-            return WebSocket_Project(self.name).Sock_Send(url, port, path, head, body)
+    def run(self,method,url,port,path=None,head=None,body=None,timeout=3):
+        if method == "Create_One":
+            return WebSocket_Project(self.name).Sock_Create_One(url, port, path, body, timeout)
+        if method == "Create_EveryOne":
+            return WebSocket_Project(self.name).Sock_Create_EveryOne(url, port, path, body, timeout)
